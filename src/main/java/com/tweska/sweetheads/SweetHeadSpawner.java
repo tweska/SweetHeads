@@ -2,6 +2,7 @@ package com.tweska.sweetheads;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.inventory.ItemStack;
@@ -16,7 +17,7 @@ import java.util.UUID;
 public abstract class SweetHeadSpawner {
 
     public static ItemStack getPlayerHead(@NotNull OfflinePlayer player) {
-        return getPlayerHead(player, player.getName());
+        return getPlayerHead(player, String.format("%s's Head", player.getName()));
     }
 
     public static ItemStack getPlayerHead(@NotNull OfflinePlayer player, @NotNull String name) {
@@ -34,7 +35,7 @@ public abstract class SweetHeadSpawner {
 
         /* Set the display name and the owner of this head. */
         meta.setDisplayName(name);
-        meta.setOwningPlayer(player);
+        meta.setOwningPlayer(Bukkit.getPlayer(player.getUniqueId()));
 
         /* Add the lore to this head. */
         ArrayList<String> lores = new ArrayList<>(Arrays.asList(lore));
