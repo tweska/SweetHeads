@@ -1,18 +1,16 @@
 package com.tweska.sweetheads.commands;
 
-import com.tweska.sweetheads.SweetHeadsPlugin;
+import com.tweska.sweetheads.SweetHeads;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
 import org.jetbrains.annotations.NotNull;
 
 public class TestCommand implements CommandExecutor {
-    private SweetHeadsPlugin plugin;
+    private SweetHeads plugin;
 
-    public TestCommand(SweetHeadsPlugin plugin) {
+    public TestCommand(SweetHeads plugin) {
         this.plugin = plugin;
     }
 
@@ -23,11 +21,8 @@ public class TestCommand implements CommandExecutor {
         }
 
         Player player = (Player) sender;
-        PlayerInventory inventory = player.getInventory();
 
-        for (ItemStack head : plugin.heads) {
-            inventory.addItem(head);
-        }
+        player.sendMessage("Hello world!");
 
         return true;
     }
