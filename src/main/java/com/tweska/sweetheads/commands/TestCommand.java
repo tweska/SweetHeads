@@ -1,16 +1,19 @@
 package com.tweska.sweetheads.commands;
 
-import com.tweska.sweetheads.SweetHeads;
+import com.tweska.sweetheads.SweetHeadsPlugin;
+import com.tweska.sweetheads.SweetHeadsUtil;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class TestCommand implements CommandExecutor {
-    private SweetHeads plugin;
+import java.io.IOException;
 
-    public TestCommand(SweetHeads plugin) {
+public class TestCommand implements CommandExecutor {
+    private SweetHeadsPlugin plugin;
+
+    public TestCommand(SweetHeadsPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -20,9 +23,19 @@ public class TestCommand implements CommandExecutor {
             return false;
         }
 
-        Player player = (Player) sender;
+        final Player player = (Player) sender;
 
-        player.sendMessage("Hello world!");
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    SweetHeadsUtil.getInstance().updateHeads();
+                } catch (IOException e) {
+                    player.sendMessage("IO exception while updating heads!");
+                    plugin.getLogger().severe("IO exception while updating heads!");
+                }
+            }
+        });
 
         return true;
     }
