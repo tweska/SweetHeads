@@ -13,6 +13,10 @@ public class HeadsFile extends JsonFile<List<Head>> {
         super(plugin, fileName, new TypeToken<List<Head>>(){}.getType(), true);
     }
 
+    public HeadsFile(JavaPlugin plugin) {
+        this(plugin, "heads-cache.json");
+    }
+
     @Override
     public List<Head> loadFile() {
         try {
