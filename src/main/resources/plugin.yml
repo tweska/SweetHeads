@@ -6,3 +6,6 @@ commands:
     updateheads:
       description: Download new heads from online sources.
       usage: /downloadheads
+    findhead:
+      description: Find a specific head.
+      usage: /findhead <search term>

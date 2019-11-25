@@ -30,6 +30,7 @@ public class SweetHeadsUtil {
     protected void setPlugin(JavaPlugin plugin) {
         this.plugin = plugin;
         headsFile = new HeadsFile(plugin);
+        loadHeads();
     }
 
     public JavaPlugin getPlugin() {
@@ -37,7 +38,7 @@ public class SweetHeadsUtil {
     }
 
     public void loadHeads() {
-        headsFile.loadFile();
+        heads.addAll(headsFile.loadFile());
     }
 
     public void saveHeads() throws IOException {
@@ -57,7 +58,7 @@ public class SweetHeadsUtil {
 
     public Head findFirst(String name) {
         for (Head head : heads) {
-            if (!head.getName().contains(name)) {
+            if (!head.getName().toLowerCase().contains(name.toLowerCase())) {
                 continue;
             }
 
