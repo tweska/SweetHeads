@@ -3,6 +3,6 @@ version: 1.0
 main: com.tweska.sweetheads.SweetHeadsPlugin
 api-version: 1.13
 commands:
-    shtest:
-      description: Test something...
-      usage: /shtest
+    updateheads:
+      description: Download new heads from online sources.
+      usage: /downloadheads

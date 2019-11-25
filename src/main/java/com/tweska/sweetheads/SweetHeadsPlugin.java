@@ -1,6 +1,6 @@
 package com.tweska.sweetheads;
 
-import com.tweska.sweetheads.commands.TestCommand;
+import com.tweska.sweetheads.commands.UpdateHeadsCommand;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -8,6 +8,8 @@ import java.io.IOException;
 
 public class SweetHeadsPlugin extends JavaPlugin {
     private PluginManager pluginManager;
+
+    public static final String chatPrefix = "[SweetHeads]";
 
     @Override
     public void onEnable() {
@@ -17,7 +19,8 @@ public class SweetHeadsPlugin extends JavaPlugin {
         /* Grab the instance of the plugin manager. */
         pluginManager = getServer().getPluginManager();
 
-        getCommand("shtest").setExecutor(new TestCommand(this));
+        /* Register the commands. */
+        getCommand("updateheads").setExecutor(new UpdateHeadsCommand(this));
     }
 
     @Override
@@ -32,8 +35,4 @@ public class SweetHeadsPlugin extends JavaPlugin {
     public SweetHeadsUtil getSweetHeadsUtilInstance() {
         return SweetHeadsUtil.getInstance();
     }
-
-
-
-
 }
