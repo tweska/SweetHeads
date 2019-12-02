@@ -67,4 +67,18 @@ public class SweetHeadsUtil {
 
         return null;
     }
+
+    public List<Head> findAll(String name) {
+        List<Head> foundHeads = new ArrayList<>();
+
+        for (Head head : heads) {
+            if (!head.getName().toLowerCase().contains(name.toLowerCase())) {
+                continue;
+            }
+
+            foundHeads.add(head);
+        }
+
+        return foundHeads;
+    }
 }

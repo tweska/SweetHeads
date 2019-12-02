@@ -65,4 +65,8 @@ public class Head {
     public String getSourceURL() {
         return sourceURL;
     }
+
+    public CustomHead getItem() {
+        return new CustomHead(name, uuidString, value);
+    }
 }

@@ -1,7 +1,9 @@
 package com.tweska.sweetheads;
 
 import com.tweska.sweetheads.commands.FindHeadCommand;
+import com.tweska.sweetheads.commands.FindHeadsCommand;
 import com.tweska.sweetheads.commands.UpdateHeadsCommand;
+import com.tweska.sweetheads.inventorygui.SearchResultGUIListener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,9 +22,12 @@ public class SweetHeadsPlugin extends JavaPlugin {
         /* Grab the instance of the plugin manager. */
         pluginManager = getServer().getPluginManager();
 
+        pluginManager.registerEvents(new SearchResultGUIListener(), this);
+
         /* Register the commands. */
         getCommand("updateheads").setExecutor(new UpdateHeadsCommand(this));
         getCommand("findhead").setExecutor(new FindHeadCommand());
+        getCommand("findheads").setExecutor(new FindHeadsCommand());
     }
 
     @Override

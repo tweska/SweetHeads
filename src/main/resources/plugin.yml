@@ -9,3 +9,6 @@ commands:
     findhead:
       description: Find a specific head.
       usage: /findhead <search term>
+    findheads:
+      description: Find a set of heads.
+      usage: /findhead <search term>
