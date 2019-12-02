@@ -26,6 +26,11 @@ public class FindHeadsCommand implements CommandExecutor {
 
         List<Head> heads = SweetHeadsUtil.getInstance().findAll(args[0]);
 
+        if (heads.size() == 0) {
+            player.sendMessage(String.format("No custom heads could be found for \"%s\"", args[0]));
+            return true;
+        }
+
         SearchResultGUI gui = new SearchResultGUI(args[0], heads);
         gui.openGUI(player);
 
